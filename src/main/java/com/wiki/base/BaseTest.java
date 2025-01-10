@@ -23,16 +23,20 @@ public class BaseTest {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		String fileName = properties.getProperty(propertyName);
-		return new File(fileName).getAbsolutePath();
+		if (propertyName.equals("app.path")) {
+			String fileName = properties.getProperty(propertyName);
+			return new File(fileName).getAbsolutePath();
+		} else {
+			return properties.getProperty(propertyName);
+		}
 	}
 
 	public void setUp() {
 		DesiredCapabilities cap = new DesiredCapabilities();
-		cap.setCapability("platformName", "platformName");
-		cap.setCapability("appium:platformVersion", "platformVersion");
-		cap.setCapability("appium:deviceName", "deviceName");
-		cap.setCapability("appium:automationName", "automationName");
+		cap.setCapability("platformName", getProperty("platformName"));
+		cap.setCapability("appium:platformVersion", getProperty("platformVersion"));
+		cap.setCapability("appium:deviceName", getProperty("deviceName"));
+		cap.setCapability("appium:automationName", getProperty("automationName"));
 		cap.setCapability("appium:app", getProperty("app.path"));
 
 		try {

@@ -21,5 +21,9 @@ This project is to E2E test wiki app on mobile by using Appium tool
  - Set mobile emulator or device properties in *src/main/java/com/wiki/resources/config.properties*
 
 ## Running the tests
+- Run appium with below command
+ ```
+ mvn clean install
+ ```
 
- - Go to *src/test/java/com/wiki/tasks* and run each task as java file
+- Go to *src/test/java/com/wiki/tasks* and run each task as java file
