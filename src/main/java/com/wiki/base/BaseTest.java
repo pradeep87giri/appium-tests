@@ -16,24 +16,24 @@ public class BaseTest {
 
 	public AndroidDriver driver;
 
-	public static String getAppPath() {
+	public static String getProperty(String propertyName) {
 		Properties properties = new Properties();
 		try (FileInputStream input = new FileInputStream("src/main/java/com/wiki/resources/config.properties")) {
 			properties.load(input);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		String fileName = properties.getProperty("app.path");
+		String fileName = properties.getProperty(propertyName);
 		return new File(fileName).getAbsolutePath();
 	}
 
 	public void setUp() {
 		DesiredCapabilities cap = new DesiredCapabilities();
-		cap.setCapability("platformName", "Android");
-		cap.setCapability("appium:platformVersion", "11.0");
-		cap.setCapability("appium:deviceName", "Pixel_7_API_30");
-		cap.setCapability("appium:automationName", "UiAutomator2");
-		cap.setCapability("appium:app", getAppPath());
+		cap.setCapability("platformName", "platformName");
+		cap.setCapability("appium:platformVersion", "platformVersion");
+		cap.setCapability("appium:deviceName", "deviceName");
+		cap.setCapability("appium:automationName", "automationName");
+		cap.setCapability("appium:app", getProperty("app.path"));
 
 		try {
 			driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), cap);
