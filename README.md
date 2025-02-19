@@ -1,4 +1,4 @@
-# Soar - Mobile Automation Tests
+# Appium - Mobile Automation Tests
 
 This project is to E2E test wiki app on mobile by using Appium tool
 
